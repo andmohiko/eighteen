@@ -2,7 +2,7 @@ import { Flex, Text } from '@chakra-ui/react'
 
 const Header = () => (
   <header>
-    <Flex justify="center" align="center" h="60px" backgroundColor="gray.300">
+    <Flex justify="center" align="center" h="56px" backgroundColor="gray.300">
       <Text fontSize="3xl" color="white">eighteen</Text>
     </Flex>
   </header>
