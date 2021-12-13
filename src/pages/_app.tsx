@@ -1,7 +1,7 @@
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
-
+import { RecoilRoot } from 'recoil'
 import HeadComponent from 'components/Head'
 
 const theme = extendTheme({
@@ -21,7 +21,9 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
     <>
       <HeadComponent></HeadComponent>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <RecoilRoot>
+          <Component {...pageProps} />
+        </RecoilRoot>
       </ChakraProvider>
     </>
   )
