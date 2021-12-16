@@ -1,18 +1,25 @@
 import type {
   Uid,
-  CreateSongDto
+  CreateSongDto,
+  Song
 } from 'models/index'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { db } from 'lib/firebase'
 
+const usersCollection = 'users'
+const songsCollection = 'songs'
+
 export default class SongRepository {
-  // async findById(userId: Uid): Promise<User> {
-  //   const userSnapshot = await db.collection('users').doc(userId).get()
-  //   return userSnapshot
-  // }
+  async findAll(userId: Uid): Promise<Song[]> {
+    const songsSnapshot = await getDocs(collection(db, usersCollection, userId, songsCollection))
+    const songs = songsSnapshot.docs.map((doc) => {
+      return doc.data() as Song
+    })
+    return songs
+  }
 
   async create(userId: Uid, dto: CreateSongDto) {
-    await addDoc(collection(db, 'users', userId, 'songs'), dto)
+    await addDoc(collection(db, usersCollection, userId, songsCollection), dto)
   }
 
   // async update(
