@@ -3,13 +3,14 @@ import { serverTimestamp } from 'firebase/firestore'
 import { useForm } from 'react-hook-form'
 import { Box, Button, Flex, FormControl, FormLabel, Input, Text } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import type { CreateSongDto } from 'models/index'
+import type { CreateSongDto, Uid } from 'models/index'
 import SongRepository from 'db/SongRepository'
 
 interface Props {
+  userId: Uid
 }
 
-const AddSong: React.FC<Props> = () => {
+const AddSong: React.FC<Props> = ({ userId }) => {
   const songRepository = new SongRepository()
   const {
     register,
@@ -20,12 +21,11 @@ const AddSong: React.FC<Props> = () => {
   const onSubmit = async (formInput: CreateSongDto) => {
     const dto = {
       ...formInput,
-      bestScore: 0,
       createdAt: serverTimestamp(),
       key: Number(formInput.key),
       updatedAt: serverTimestamp()
     }
-    await songRepository.create('sMIaefnce78IfLYSdxuR', dto)
+    await songRepository.create(userId, dto)
   }
 
   return (

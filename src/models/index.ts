@@ -42,7 +42,7 @@ export type Song = {
 
 export type CreateSongDto = {
   artist: Song['artist']
-  bestScore: Song['bestScore']
+  bestScore?: Song['bestScore']
   createdAt: FieldValue
   key: Song['key']
   title: Song['title']
