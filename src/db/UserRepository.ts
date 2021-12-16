@@ -15,7 +15,10 @@ export default class UserRepository {
       return
     }
     const user = userSnapshot.data() as User
-    return user
+    return {
+      ...user,
+      userId
+    }
   }
 
   async create(uid: Uid, dto: CreateUserDto) {
