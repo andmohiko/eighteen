@@ -6,8 +6,10 @@ import { Button } from '@chakra-ui/button'
 import { userState } from 'atoms'
 import { useMemo } from 'react'
 import SongRepository from 'db/SongRepository'
+import { useCheckLogin } from 'hooks/useCheckLogin'
 
 const IndexPage = ({ songsServer }) => {
+  useCheckLogin()
   const user = useRecoilValue(userState)
 
   return (
