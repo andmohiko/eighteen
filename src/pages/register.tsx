@@ -1,11 +1,9 @@
-import Link from 'next/link'
 import { onAuthStateChanged } from 'firebase/auth'
 import Layout from '../components/Layout'
-import { Button, Box } from '@chakra-ui/react'
+import { Button, Box, Text } from '@chakra-ui/react'
 import { Login, Logout, auth } from 'lib/firebase'
 import { atom, useRecoilState } from 'recoil'
 import { userState } from 'atoms/index'
-import { User } from 'models/index'
 import UserRepository from 'db/UserRepository'
 import { useEffect } from 'react'
 import { serverTimestamp } from '@firebase/firestore'
@@ -41,19 +39,36 @@ const RegisterPage = () => {
   return (
     <Layout>
       <Box justifyContent="center" alignItems="center">
-        <Button
-          onClick={Login}
-          label='ログイン'
-        >
-          ユーザー登録
-        </Button>
-        <Box mt={2} textAlign="center">
-          <pre>
-            {user
-              ? user.userId + "でログイン中"
-              : "not login"
-            }
-          </pre>
+        <Box justifyContent="center" alignItems="center" textAlign="center">
+          <Text>カラオケ持ち曲管理アプリ</Text>
+          <Text fontSize="2xl">eighteen</Text>
+        </Box>
+        <Box mx={2} my={4} p={2} rounded='md' boxShadow='md' bg='white'>
+          <Text fontSize="xl" pb={2}>できること👍</Text>
+          <Text pb={1}>◎ カラオケで歌う曲とキーをメモ</Text>
+          <Text pb={1}>◎ 登録した曲ジャンルごとに検索</Text>
+          <Text pb={1}>◎ 過去の最高点を記録</Text>
+        </Box>
+        <Box mx={2} my={4} p={2} rounded='md' boxShadow='md' bg='white'>
+          <Text fontSize="xl" pb={2}>こんな人におすすめ🙆</Text>
+          <Text pb={1}>◎ カラオケで歌いたい曲がパッと出てこない</Text>
+          <Text pb={1}>◎ それで帰りがけに思い出して悔しくなる</Text>
+          <Text pb={1}>◎ よく歌う曲のキーをメモりたい人</Text>
+        </Box>
+        <Box mx={2} my={4} p={2} rounded='md' boxShadow='md' bg='white'>
+          <Text fontSize="xl" pb={2}>今後追加される機能🚀</Text>
+          <Text>◎ 歌うたびに点数を記録</Text>
+          <Text>◎ 他の人の持ち曲を見る</Text>
+        </Box>
+
+        <Box textAlign="center">
+          <Button
+            onClick={Login}
+            label='ログイン'
+            mt={4}
+          >
+            Twitterでログイン
+          </Button>
         </Box>
       </Box>
     </Layout>
