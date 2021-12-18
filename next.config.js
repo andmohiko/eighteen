@@ -1,10 +1,12 @@
 const withPWA = require("next-pwa")
 const runtimeCaching = require("next-pwa/cache")
 
+const isProd = process.env.NEXT_PUBLIC_ENV === 'production'
 const config = {
   pwa: {
     dest: "public",
-    runtimeCaching
+    runtimeCaching,
+    disable: isProd ? false : true,
   }
 }
 
