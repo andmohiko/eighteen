@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Layout = ({ children }: Props) => (
-  <Box w={"100vw"} minH={"100vh"} border="1px" borderColor="blue">
+  <Box w={"100vw"} minH={"calc(100% + env(safe-area-inset-top))"} border="1px" borderColor="blue">
     <Header />
     <Flex justify={"center"}>
       <Box minH="calc(100vh - 124px)" maxW="375px" border="1px" borderColor="blue">
