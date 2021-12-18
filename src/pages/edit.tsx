@@ -5,7 +5,7 @@ import AddSong from 'components/Input/AddSong'
 const IndexPage = () => {
   return (
     <Layout>
-      <AddSong />
+      <AddSong userId={'x8T7SlQ1AReWaR0zyFoyadlhAdd2'} />
     </Layout>
   )
 }
