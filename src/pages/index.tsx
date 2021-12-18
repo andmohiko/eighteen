@@ -11,6 +11,7 @@ import { useCheckLogin } from 'hooks/useCheckLogin'
 const IndexPage = ({ songsServer }) => {
   useCheckLogin()
   const user = useRecoilValue(userState)
+  const songs = songsServer ?? []
 
   return (
     <Layout>
@@ -22,7 +23,7 @@ const IndexPage = ({ songsServer }) => {
       <p>user: { user ? user.username : 'no login'}</p>
       {/* 持ち曲一覧 */}
       {/* <p>{songsServer.length}</p> */}
-      <SongsTable songs={songsServer} />
+      <SongsTable songs={songs} />
     </Layout>
   )
 }

@@ -31,14 +31,13 @@ export const Login = () => {
     })
     .catch(function (error) {
       console.log('error', error)
-    });
-};
+    })
+}
 
 export const firebaseUser = () => {
   return auth.currentUser
 }
 
-// Logout
 export const Logout = () => {
   auth.signOut().then(() => {
     window.location.reload()
