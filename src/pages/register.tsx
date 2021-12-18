@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { onAuthStateChanged } from 'firebase/auth'
 import Layout from '../components/Layout'
 import { Button, Box, Text } from '@chakra-ui/react'
@@ -10,7 +11,9 @@ import { serverTimestamp } from '@firebase/firestore'
 
 const RegisterPage = () => {
   const userRepository = new UserRepository()
+  const router = useRouter()
   const [user, setUser] = useRecoilState(userState)
+
   useEffect(() => {
     onAuthStateChanged(auth, async (firebaseUser) => {
       console.log('firebaseuser auth', auth.currentUser)
@@ -33,6 +36,7 @@ const RegisterPage = () => {
         foundUser = await userRepository.findById(userId)
       }
       setUser(foundUser)
+      router.push('/')
     })
   }, [])
 
