@@ -3,6 +3,7 @@ import type { AppProps, AppContext } from 'next/app'
 import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { RecoilRoot } from 'recoil'
 import HeadComponent from 'components/Head'
+import 'assets/styles/style.css'
 
 const theme = extendTheme({
   components: {
