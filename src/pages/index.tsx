@@ -20,8 +20,13 @@ const IndexPage = () => {
       if (!value) return
       const songs = value.map((doc) => {
         return {
-          ...doc,
-          songId: doc.id
+          songId: doc.id,
+          artist: doc.artist,
+          bestScore: doc.bestScore,
+          createdAt: doc.createdAt,
+          key: doc.key,
+          title: doc.title,
+          updatedAt: doc.updatedAt
         }
       })
       setSongs(songs)
