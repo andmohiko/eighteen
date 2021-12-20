@@ -1,8 +1,8 @@
 import { useState, useMemo, useCallback } from 'react'
 
-type UsePaginationReturnType = {
+type UsePaginationReturnType<ItemType> = {
   currentPage: number
-  slicedItems: any
+  slicedItems: ItemType[]
   pagesQuantity: number
   handlePageChange: (toPage: number) => void
 }
@@ -10,7 +10,7 @@ type UsePaginationReturnType = {
 export const usePagination = <ItemType>(
   itemsPerPage: number,
   items: ItemType[]
-): UsePaginationReturnType => {
+): UsePaginationReturnType<ItemType> => {
   const [currentPage, setCurrentPage] = useState(0)
   const cursorHead = useMemo(() => currentPage * itemsPerPage, [currentPage])
   const cursorTail = useMemo(
@@ -23,12 +23,12 @@ export const usePagination = <ItemType>(
   }, [items.length])
 
   const handlePageChange = useCallback((toPage: number) => {
-    setCurrentPage(currentPage + toPage)
+    setCurrentPage((currentPage) => currentPage + toPage)
   }, [])
 
   const slicedItems = useMemo(
     () => items.slice(cursorHead, cursorTail),
-    [cursorHead, cursorTail]
+    [cursorHead, cursorTail, items]
   )
 
   return {
