@@ -28,7 +28,7 @@ const MypagePage = () => {
             color={"gray.400"}
             mt={4}
           >
-            Ver 0.1.0
+            Ver 1.0.1
           </Text>
         </Box>
       </Box>

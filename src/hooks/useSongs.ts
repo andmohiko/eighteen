@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { db } from 'lib/firebase'
-import { collection } from 'firebase/firestore'
+import { collection, query, orderBy } from 'firebase/firestore'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import { Uid, Song } from 'models'
 
@@ -9,7 +9,8 @@ export const useSongs = (userId: Uid) => {
   if (!userId) {
     return songs
   }
-  const [value, loading, error] = useCollection(collection(db, 'users', userId, 'songs'))
+
+  const [value, loading, error] = useCollection(query(collection(db, 'users', userId, 'songs'), orderBy('artist')))
     useEffect(() => {
       if (!value) return
       const songs = value.docs.map((doc) => {
