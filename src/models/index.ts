@@ -62,3 +62,9 @@ export type Tag = {
   label: string
   updatedAt: Date
 }
+
+export type CreateTagDto = {
+  createdAt: FieldValue
+  label: Tag['label']
+  updatedAt: FieldValue
+}
