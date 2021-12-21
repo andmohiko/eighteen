@@ -21,6 +21,13 @@ export type CreateUserDto = {
   username: User['username']
 }
 
+export type UpdateUserDto = {
+  bestScore?: User['bestScore']
+  repertory?: FieldValue
+  updatedAt: FieldValue
+  username?: User['username']
+}
+
 export type CreateUserForm = {
   username: User['username']
 }
