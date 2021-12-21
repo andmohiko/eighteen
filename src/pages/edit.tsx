@@ -9,7 +9,9 @@ const IndexPage = () => {
   const user = useRecoilValue(userState)
   return (
     <Layout>
-      <AddSong userId={user.userId} />
+      {user && (
+        <AddSong userId={user.userId} />
+      )}
     </Layout>
   )
 }
