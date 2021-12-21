@@ -33,6 +33,7 @@ const Footer = () => {
         position={"fixed"}
         bottom={0}
         w={"100vw"}
+        pb={"constant(safe-area-inset-bottom)"}
       >
         <Flex
           w={"100%"}
