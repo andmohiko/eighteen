@@ -5,9 +5,11 @@ import { Box, Button, Text } from '@chakra-ui/react'
 import { userState } from 'atoms'
 import { useCheckLogin } from 'hooks/useCheckLogin'
 import { Logout } from 'lib/firebase'
+import { useCheckVersion } from 'hooks/useCheckVersion'
 
 const MypagePage = () => {
   const [user, setUser] = useRecoilState(userState)
+  const { currentVersion } = useCheckVersion()
 
   useCheckLogin()
   const logoutEighteen = () => {
@@ -24,6 +26,15 @@ const MypagePage = () => {
         </Box>
         <Box p={4} textAlign={"right"}>
           <Button onClick={logoutEighteen}>ログアウト</Button>
+          {currentVersion && (
+            <Text
+              fontSize={"sm"}
+              color={"gray.400"}
+              mt={4}
+            >
+              Ver {currentVersion}
+            </Text>
+          )}
         </Box>
       </Box>
     </Layout>
