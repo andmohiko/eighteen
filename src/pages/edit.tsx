@@ -1,11 +1,15 @@
-import Link from 'next/link'
 import Layout from 'components/Layout'
 import AddSong from 'components/Input/AddSong'
+import { useCheckLogin } from 'hooks/useCheckLogin'
+import { useRecoilValue } from 'recoil'
+import { userState } from 'atoms'
 
 const IndexPage = () => {
+  useCheckLogin()
+  const user = useRecoilValue(userState)
   return (
     <Layout>
-      <AddSong userId={'x8T7SlQ1AReWaR0zyFoyadlhAdd2'} />
+      <AddSong userId={user.userId} />
     </Layout>
   )
 }
