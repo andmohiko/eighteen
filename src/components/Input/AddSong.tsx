@@ -1,7 +1,7 @@
 import React from 'react'
 import { serverTimestamp, increment } from 'firebase/firestore'
 import { useForm } from 'react-hook-form'
-import { Box, Button, Flex, FormControl, FormLabel, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Input, Text, useToast } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
 import type { CreateSongDto, Uid } from 'models/index'
 import SongRepository from 'db/SongRepository'
@@ -21,8 +21,10 @@ const AddSong: React.FC<Props> = ({ userId }) => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting }
+    formState: { isSubmitting },
+    reset
   } = useForm()
+  const toast = useToast()
 
   const onSubmit = async (formInput: CreateSongDto) => {
     const dto = {
@@ -40,8 +42,16 @@ const AddSong: React.FC<Props> = ({ userId }) => {
       repertory: increment(1),
       updatedAt: serverTimestamp()
     })
+    reset()
     const foundUser = await userRepository.findById(userId)
     setUser(foundUser)
+    toast({
+      title: '持ち曲を登録しました',
+      status: 'success',
+      duration: 3000,
+      position: 'top',
+      isClosable: true
+    })
   }
 
   return (
