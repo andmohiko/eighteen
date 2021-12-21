@@ -6,13 +6,12 @@ import {
   FlexProps,
   Icon,
   Link,
-  List,
   ListItem,
-  ListIcon,
   Text,
   UnorderedList,
 } from '@chakra-ui/react'
-import { FiHome, FiUser, FiMessageCircle } from 'react-icons/fi'
+import { FiHome, FiUser } from 'react-icons/fi'
+import { AiOutlinePlusCircle } from 'react-icons/ai'
 import type { IconType } from 'react-icons'
 
 interface LinkItemProps {
@@ -22,30 +21,44 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'ホーム', icon: FiHome, uri: '/' },
-  { name: '記録', icon: FiUser, uri: '/history' },
-  { name: 'マイページ', icon: FiUser, uri: '/mypage' },
+  { name: '一覧', icon: FiHome, uri: '/' },
+  { name: '追加', icon: AiOutlinePlusCircle, uri: '/edit' },
+  { name: 'マイページ', icon: FiUser, uri: '/mypage' }
 ]
 
 const Footer = () => {
   return (
     <footer>
-      <UnorderedList
-        styleType="none"
-        display="flex"
-        justify="space-between"
-        py={2}
+      <Flex
+        position={"fixed"}
+        bottom={0}
+        w={"100vw"}
       >
-        <ListItem>
-          <Flex>
-            {LinkItems.map((link) => (
-              <NavItem key={link.name} icon={link.icon} uri={link.uri}>
-                {link.name}
-              </NavItem>
-            ))}
-          </Flex>
-        </ListItem>
-      </UnorderedList>
+        <Flex
+          w={"100%"}
+          justify={"center"}
+          borderTop="1px"
+          borderColor={"gray.200"}
+          backgroundColor={"white"}
+        >
+          <UnorderedList
+            styleType="none"
+            display="flex"
+            justify="space-between"
+            py={2}
+          >
+            <ListItem>
+              <Flex>
+                {LinkItems.map((link) => (
+                  <NavItem key={link.name} icon={link.icon} uri={link.uri}>
+                    {link.name}
+                  </NavItem>
+                ))}
+              </Flex>
+            </ListItem>
+          </UnorderedList>
+        </Flex>
+      </Flex>
     </footer>
   )
 }

@@ -1,4 +1,4 @@
-import { FieldValue } from "firebase/firestore"
+import { FieldValue } from 'firebase/firestore'
 
 export type Uid = string
 
@@ -21,6 +21,13 @@ export type CreateUserDto = {
   username: User['username']
 }
 
+export type UpdateUserDto = {
+  bestScore?: User['bestScore']
+  repertory?: FieldValue
+  updatedAt: FieldValue
+  username?: User['username']
+}
+
 export type CreateUserForm = {
   username: User['username']
 }
@@ -36,6 +43,7 @@ export type Song = {
   bestScore: Score
   createdAt: Date
   key: number
+  tag?: string
   title: string
   updatedAt: Date
 }
@@ -45,6 +53,7 @@ export type CreateSongDto = {
   bestScore?: Song['bestScore']
   createdAt: FieldValue
   key: Song['key']
+  tag?: Song['tag']
   title: Song['title']
   updatedAt: FieldValue
 }
@@ -54,4 +63,10 @@ export type Tag = {
   createdAt: Date
   label: string
   updatedAt: Date
+}
+
+export type CreateTagDto = {
+  createdAt: FieldValue
+  label: Tag['label']
+  updatedAt: FieldValue
 }

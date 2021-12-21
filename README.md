@@ -1,6 +1,6 @@
-# TypeScript Next.js example
+# eighteen
 
-This is a really simple project that shows the usage of Next.js with TypeScript.
+![](src/assets/images/18logo.png)
 
 ## Preview
 

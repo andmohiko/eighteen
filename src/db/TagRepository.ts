@@ -1,16 +1,16 @@
 import type {
   Uid,
-  CreateSongDto
+  CreateTagDto
 } from 'models/index'
 import { collection, getDocs, addDoc } from 'firebase/firestore'
 import { db } from 'lib/firebase'
 
 const usersCollection = 'users'
-const songsCollection = 'songs'
+const tagsCollection = 'tags'
 
-export default class SongRepository {
-  async create(userId: Uid, dto: CreateSongDto) {
-    await addDoc(collection(db, usersCollection, userId, songsCollection), dto)
+export default class TagRepository {
+  async create(userId: Uid, dto: CreateTagDto) {
+    await addDoc(collection(db, usersCollection, userId, tagsCollection), dto)
   }
 
   // async update(
