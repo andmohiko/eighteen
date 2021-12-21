@@ -33,7 +33,9 @@ const SongsTable: React.FC<Props> = ({ songs }) => {
                 <Text>{song.artist}</Text>
               </Td>
               <Td w="10%">
-                <Text>{song.key}</Text>
+                {song.key > 0 && <Text>+{song.key}</Text>}
+                {song.key === 0 && <Text>±{song.key}</Text>}
+                {song.key < 0 && <Text>{song.key}</Text>}
               </Td>
             </Tr>
           ))}
