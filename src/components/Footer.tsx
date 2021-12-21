@@ -6,9 +6,7 @@ import {
   FlexProps,
   Icon,
   Link,
-  List,
   ListItem,
-  ListIcon,
   Text,
   UnorderedList,
 } from '@chakra-ui/react'

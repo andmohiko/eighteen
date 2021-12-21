@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { useRecoilState } from 'recoil'
 import Layout from 'components/Layout'
 import { Box, Button, Text } from '@chakra-ui/react'

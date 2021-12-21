@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import {
   getAuth,
-  onAuthStateChanged,
   signInWithPopup,
   TwitterAuthProvider
 } from 'firebase/auth'
