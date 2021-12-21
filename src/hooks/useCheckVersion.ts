@@ -8,11 +8,11 @@ import { fetchAndActivate, getValue } from 'firebase/remote-config'
 export const useCheckVersion = () => {
   const [currentVersion, setCurrentVersion] = useState('')
   const getLatestVersion = async () => {
-    const latestVersion = await fetchAndActivate(remoteConfig)
+    await fetchAndActivate(remoteConfig)
         .then(() => {
           const latestVersion = getValue(remoteConfig, 'latestVersion')
+          // @ts-ignore
           setCurrentVersion(latestVersion._value)
-          return latestVersion._value ?? ''
         })
         .catch((error) => {
           console.log(error)
