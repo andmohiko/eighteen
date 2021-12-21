@@ -12,7 +12,7 @@ const Layout = ({ children }: Props) => (
     <Header />
     <Flex justify={"center"}>
       <Flex maxW="375px">
-        <Box minH="calc(100vh - 124px)" w="100vw" border="1px" borderColor="blue">
+        <Box minH="calc(100vh - 124px)" w="100vw">
           {children}
         </Box>
       </Flex>
