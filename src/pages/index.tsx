@@ -15,7 +15,6 @@ const IndexPage = () => {
   const user = useRecoilValue(userState)
   if (user) {
     const [value, loading, error] = useCollectionData(collection(db, 'users', user.userId, 'songs'))
-    console.log('vle', value, loading, error)
     useEffect(() => {
       if (!value) return
       const songs = value.map((doc) => {
@@ -31,7 +30,6 @@ const IndexPage = () => {
       })
       setSongs(songs)
     }, [value])
-    console.log('songs', user.userId, songs)
   }
 
   return (
