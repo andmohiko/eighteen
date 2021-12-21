@@ -31,22 +31,36 @@ const LinkItems: Array<LinkItemProps> = [
 const Footer = () => {
   return (
     <footer>
-      <UnorderedList
-        styleType="none"
-        display="flex"
-        justify="space-between"
-        py={2}
+      <Flex
+        position={"fixed"}
+        bottom={0}
+        w={"100vw"}
       >
-        <ListItem>
-          <Flex>
-            {LinkItems.map((link) => (
-              <NavItem key={link.name} icon={link.icon} uri={link.uri}>
-                {link.name}
-              </NavItem>
-            ))}
-          </Flex>
-        </ListItem>
-      </UnorderedList>
+        <Flex
+          w={"100%"}
+          justify={"center"}
+          borderTop="1px"
+          borderColor={"gray.200"}
+          backgroundColor={"white"}
+        >
+          <UnorderedList
+            styleType="none"
+            display="flex"
+            justify="space-between"
+            py={2}
+          >
+            <ListItem>
+              <Flex>
+                {LinkItems.map((link) => (
+                  <NavItem key={link.name} icon={link.icon} uri={link.uri}>
+                    {link.name}
+                  </NavItem>
+                ))}
+              </Flex>
+            </ListItem>
+          </UnorderedList>
+        </Flex>
+      </Flex>
     </footer>
   )
 }
