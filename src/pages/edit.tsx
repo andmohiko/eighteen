@@ -6,18 +6,22 @@ import { useCheckLogin } from 'hooks/useCheckLogin'
 import { useRecoilValue } from 'recoil'
 import { userState } from 'atoms'
 import { useTags } from 'hooks/useTags'
+import { useMemo } from 'react'
 
 const IndexPage = () => {
   useCheckLogin()
   const user = useRecoilValue(userState)
   const tags = useTags(user?.userId)
+  const tagLabels = useMemo(() => {
+    return tags.map(tag => tag.label)
+  }, [tags])
 
   return (
     <Layout>
       {user && (
         <Box>
-          <AddSong userId={user.userId} />
-          <AddTag userId={user.userId} tags={tags} />
+          <AddSong userId={user.userId} tags={tagLabels} />
+          <AddTag userId={user.userId} tags={tagLabels} />
         </Box>
       )}
     </Layout>

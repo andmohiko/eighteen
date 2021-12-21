@@ -11,14 +11,11 @@ import { userState } from 'atoms/index'
 
 interface Props {
   userId: Uid
-  tags: Tag[]
+  tags: Tag['label'][]
 }
 
 const AddSong: React.FC<Props> = ({ userId, tags }) => {
   const tagRepository = new TagRepository()
-  const tagLabels = useMemo(() => {
-    return tags.map(tag => tag.label)
-  }, [tags])
 
   const {
     register,
@@ -32,7 +29,7 @@ const AddSong: React.FC<Props> = ({ userId, tags }) => {
     if (!label) {
       return 'カテゴリーを入力してください'
     }
-    if (tagLabels.includes(label)) {
+    if (tags.includes(label)) {
       return 'すでに追加済みのカテゴリーです'
     }
     return
@@ -48,7 +45,7 @@ const AddSong: React.FC<Props> = ({ userId, tags }) => {
       console.log('no label')
       return
     }
-    if (tagLabels.includes(dto.label)) {
+    if (tags.includes(dto.label)) {
       console.log('already in tags')
       return
     }
@@ -64,7 +61,7 @@ const AddSong: React.FC<Props> = ({ userId, tags }) => {
   }
 
   return (
-    <Box alignItems="center" px={2} mt="64px">
+    <Box alignItems="center" px={2} mb="64px">
       <Text fontSize="xl" textAlign="center" my={2}>カテゴリーを追加する</Text>
       <form onSubmit={handleSubmit(onSubmit)}>
         
