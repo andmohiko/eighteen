@@ -1,9 +1,9 @@
 import React from 'react'
 import { serverTimestamp, increment } from 'firebase/firestore'
 import { useForm } from 'react-hook-form'
-import { Box, Button, Flex, FormControl, FormLabel, Input, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Input, Select, Text, useToast } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import type { CreateSongDto, Uid } from 'models/index'
+import type { CreateSongDto, Tag, Uid } from 'models/index'
 import SongRepository from 'db/SongRepository'
 import UserRepository from 'db/UserRepository'
 import { useRecoilState } from 'recoil'
@@ -11,9 +11,10 @@ import { userState } from 'atoms/index'
 
 interface Props {
   userId: Uid
+  tags: Tag['label'][]
 }
 
-const AddSong: React.FC<Props> = ({ userId }) => {
+const AddSong: React.FC<Props> = ({ userId, tags }) => {
   const songRepository = new SongRepository()
   const userRepository = new UserRepository()
   const [user, setUser] = useRecoilState(userState)
@@ -55,7 +56,7 @@ const AddSong: React.FC<Props> = ({ userId }) => {
   }
 
   return (
-    <Box alignItems="center" px={2}>
+    <Box alignItems="center" px={2} mb="64px">
       <form onSubmit={handleSubmit(onSubmit)}>
         <Text fontSize="xl" textAlign="center" my={2}>持ち曲を追加する</Text>
         <FormControl>
@@ -92,6 +93,24 @@ const AddSong: React.FC<Props> = ({ userId }) => {
               placeholder="+3"
               {...register('key')}
             />
+          </Box>
+        </FormControl>
+        <FormControl>
+          <Box alignItems="center" mb={4}>
+            <FormLabel w={100} htmlFor="tag">
+              カテゴリー
+            </FormLabel>
+            <Select
+              id="tag"
+              {...register('tag')}
+            >
+              <option value={''}>{''}</option>
+              {tags.map((tagLabel) => (
+                <option key={tagLabel} value={tagLabel}>
+                  {tagLabel}
+                </option>
+              ))}
+            </Select>
           </Box>
         </FormControl>
         <Button
