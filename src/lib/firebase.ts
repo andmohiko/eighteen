@@ -6,7 +6,6 @@ import {
   TwitterAuthProvider
 } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
-import { getRemoteConfig } from 'firebase/remote-config'
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -21,12 +20,6 @@ const config = {
 const firebaseApp = initializeApp(config)
 export const db = getFirestore()
 export const auth = getAuth()
-export const remoteConfig = getRemoteConfig()
-remoteConfig.settings.minimumFetchIntervalMillis = 3600000
-remoteConfig.defaultConfig = {
-  'latestVersion': '0.1.0'
-}
-
 export default firebaseApp
 
 export const Login = () => {
