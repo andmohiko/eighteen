@@ -14,8 +14,8 @@ const MypagePage = () => {
     <Layout>
       <Box justifyContent={"space-between"}>
         <Box p={4}>
-          <Text fontSize="2xl">{user.username}</Text>
-          <Text fontSize="base" mt={2}>登録曲数: {user.repertory}</Text>
+          <Text fontSize="2xl">{user && user.username}</Text>
+          <Text fontSize="base" mt={2}>登録曲数: {user && user.repertory}</Text>
         </Box>
         <Box p={4} textAlign={"right"}>
           <Button onClick={Logout}>ログアウト</Button>

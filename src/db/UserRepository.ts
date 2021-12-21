@@ -1,9 +1,10 @@
 import type {
   Uid,
   User,
-  CreateUserDto
+  CreateUserDto,
+  UpdateUserDto
 } from 'models/index'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+import { doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 import { db } from 'lib/firebase'
 
 const usersCollection = 'users'
@@ -23,16 +24,12 @@ export default class UserRepository {
 
   async create(uid: Uid, dto: CreateUserDto) {
     await setDoc(doc(db, usersCollection, uid), dto)
-
   }
 
-  // async update(
-  //   menheraUserId: MenheraUserId,
-  //   updateMenheraUserDto: UpdateMenheraUserDto
-  // ): Promise<MenheraUser | void> {
-  //   await db
-  //     .collection('menheraUsers')
-  //     .doc(menheraUserId)
-  //     .update(updateMenheraUserDto)
-  // }
+  async update(
+    userId: Uid,
+    updateUserDto: UpdateUserDto
+  ): Promise<void> {
+    await updateDoc(doc(db, usersCollection, userId), updateUserDto)
+  }
 }

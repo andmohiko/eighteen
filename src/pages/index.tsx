@@ -36,7 +36,6 @@ const IndexPage = () => {
 
   return (
     <Layout>
-      <p>user: { user ? user.username : 'no login'}</p>
       <SongsTable songs={songs} />
     </Layout>
   )
