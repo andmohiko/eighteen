@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { useRecoilValue } from 'recoil'
 import { userState } from 'atoms'
 
@@ -9,6 +9,7 @@ export const useCheckLogin = () => {
 
   useEffect(() => {
     if (router.pathname === '/register') return
+
     if (!user) {
       router.push('/register')
     }
