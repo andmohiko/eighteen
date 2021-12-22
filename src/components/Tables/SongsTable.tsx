@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react'
+import { Badge, Text, Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react'
 import { usePagination } from 'hooks/usePagination'
 import PaginationNav from 'components/PaginationNav'
 import { Song } from 'models'
@@ -19,18 +19,19 @@ const SongsTable: React.FC<Props> = ({ songs }) => {
         <Thead backgroundColor="gray.200">
           <Tr>
             <Th px={6} py={4}>曲名</Th>
-            <Th p={4}>アーティスト</Th>
+            <Th p={4}></Th>
             <Th p={4}>キー</Th>
           </Tr>
         </Thead>
         <Tbody backgroundColor="white">
           {slicedItems.map((song: Song) => (
             <Tr key={song.songId}>
-              <Td w="50%">
+              <Td w="85%">
                 <Text>{song.title}</Text>
+                <Text fontSize={"xs"} color={"gray.500"}>{song.artist}</Text>
               </Td>
-              <Td w="40%">
-                <Text>{song.artist}</Text>
+              <Td w="5%">
+                {song.tag && (<Badge colorScheme="teal" mt={2}>{song.tag}</Badge>)}
               </Td>
               <Td w="10%">
                 {song.key > 0 && <Text>+{song.key}</Text>}

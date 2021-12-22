@@ -21,6 +21,7 @@ export const useSongs = (userId: Uid) => {
           bestScore: song.bestScore,
           createdAt: song.createdAt,
           key: song.key,
+          tag: song.tag,
           title: song.title,
           updatedAt: song.updatedAt
         }
